@@ -32,18 +32,22 @@ export default function Sidebar() {
  
   return (
     
-    <Card className="h-screen md:w-full max-w-[20rem] p-4 
-    shadow-xl shadow-blue-gray-900/5 lg:flex hidden"
-    shadow={true}>
-      <div className="mb-2 p-4 flex flex-row items-center
-      gap-2 justify-between">
-        <Typography variant="h5" color="blue-gray">
+    <Card
+      className={`h-screen ${open ? "w-64" : "w-14"} p-4 
+      shadow-xl shadow-blue-gray-900/5 rounded-none
+      md:flex border-r border-gray-700 overflow-hidden`}
+      shadow={true}
+    >
+      <div className="mb-2 p-4 flex flex-row items-center gap-2 justify-between">
+        <Typography variant="h5" color="blue-gray" className="hidden md:block">
           Sidebar
         </Typography>
-        <div onClick={handleOpen} className="cursor-pointer">
+        <div onClick={handleOpen} 
+        className="cursor-pointer 
+        flex md:hidden items-end">
           {open ? <XCircleIcon className="h-6 w-6 text-gray-500" /> : <Bars4Icon className="h-6 w-6 text-gray-500" />}
         </div>
-        </div>
+      </div>
       <List>
         <Accordion
           open={open === 1}
