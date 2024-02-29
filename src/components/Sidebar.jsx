@@ -18,25 +18,32 @@ import {
   Cog6ToothIcon,
   InboxIcon,
   PowerIcon,
+  Bars4Icon,
+  XCircleIcon,
 } from "@heroicons/react/24/solid";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
  
 export default function Sidebar() {
-  const [open, setOpen] = React.useState(0);
+  const [open, setOpen] = React.useState(false);
  
-  const handleOpen = (value) => {
-    setOpen(open === value ? 0 : value);
-  };
+  const handleOpen = () => {
+    setOpen(!open);
+  }
  
   return (
+    
     <Card className="h-screen md:w-full max-w-[20rem] p-4 
     shadow-xl shadow-blue-gray-900/5 lg:flex hidden"
     shadow={true}>
-      <div className="mb-2 p-4">
+      <div className="mb-2 p-4 flex flex-row items-center
+      gap-2 justify-between">
         <Typography variant="h5" color="blue-gray">
           Sidebar
         </Typography>
-      </div>
+        <div onClick={handleOpen} className="cursor-pointer">
+          {open ? <XCircleIcon className="h-6 w-6 text-gray-500" /> : <Bars4Icon className="h-6 w-6 text-gray-500" />}
+        </div>
+        </div>
       <List>
         <Accordion
           open={open === 1}
@@ -145,5 +152,6 @@ export default function Sidebar() {
         </ListItem>
       </List>
     </Card>
+    
   );
 }
